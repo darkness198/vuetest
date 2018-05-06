@@ -12,11 +12,12 @@
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
     "start": "http-server ../backend/assets -p 3000",
-    "test": "pm2 start build/dev-server.js --name vue-sails-example -f & cypress run --headed && pm2 stop vue-sails-example && pm2 delete vue-sails-example"
+    "test":
+      "pm2 start build/dev-server.js --name vue-sails-example -f & cypress run --headed && pm2 stop vue-sails-example && pm2 delete vue-sails-example"
   },
   "dependencies": {
     "bootstrap": "^4.1.1",
-    "bootstrap-vue": "^1.5.1",
+
     "ejs": "^2.5.9",
     "faker": "^4.1.0",
     "http-server": "^0.11.1",
@@ -56,7 +57,7 @@
     "cross-env": "^3.1.4",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.26.1",
-    "cypress": "^1.4.2",
+
     "eslint": "^3.19.0",
     "eslint-config-standard": "^6.2.1",
     "eslint-friendly-formatter": "^2.0.7",
@@ -97,9 +98,5 @@
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
 }
