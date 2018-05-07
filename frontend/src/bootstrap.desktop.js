@@ -11,6 +11,7 @@ Vue.use(BootstrapVue)
 Vue.use(Vuetify)
 
 Vue.http.interceptors.push((request, next) => {
+  console.log('In Intercptor')
   if (request.url !== '/api/login/post') {
     let token = window.localStorage.getItem('token')
     request.headers.set('token', token)
@@ -26,6 +27,7 @@ Vue.http.interceptors.push((request, next) => {
 })
 
 router.beforeEach((to, from, next) => {
+  console.log('In Router')
   if (to.matched.some(record => record.meta.userOnly)) {
     const getCookie = name => {
       let a = `; ${document.cookie}`.match(`;\\s*${name}=([^;]+)`)

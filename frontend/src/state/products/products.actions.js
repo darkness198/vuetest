@@ -3,9 +3,11 @@ import Vue from 'vue'
 export default {
   getProducts (context, page) {
     return new Promise((resolve, reject) => {
+      console.log(page)
       Vue.http
-        .get('/api/products/get', {params: {page}})
-        .then(async ({body}) => {
+        .get('/api/products/get', { params: { page } })
+        .then(async ({ body }) => {
+          console.log('resolves with body:', body)
           context.commit('SET_PRODUCTS', body)
           resolve()
         })
@@ -16,8 +18,8 @@ export default {
   getShopProducts (context, page) {
     return new Promise((resolve, reject) => {
       Vue.http
-        .get('/api/user/products/get', {params: {page}})
-        .then(({body}) => {
+        .get('/api/user/products/get', { params: { page } })
+        .then(({ body }) => {
           context.commit('SET_PRODUCTS', body)
           resolve()
         })
@@ -29,7 +31,7 @@ export default {
     return new Promise((resolve, reject) => {
       Vue.http
         .get('/api/user/products/getProductsByUser')
-        .then(({body}) => {
+        .then(({ body }) => {
           context.commit('SET_PRODUCTS', body)
           resolve()
         })
