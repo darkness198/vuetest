@@ -9,7 +9,7 @@
     "mystart": "cd backend && node app.js",
     "heroku-prebuild": "npm run clean",
     "heroku-postbuild":
-      "cd frontend && npm install && npm run build && cd ../backend && rm -rf .tmp && npm install ",
+      " cd backend && rm -rf .tmp && npm install && cd ../frontend && npm install && npm run build ",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "push":
       "git push && git push heroku `git subtree split --prefix backend master`:master --force"
