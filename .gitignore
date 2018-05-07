@@ -132,5 +132,5 @@ lib-cov
 *.pid
 
 config/custom.js
-config/datastores.js
+backend/config/datastores.js
 coverage

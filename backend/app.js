@@ -65,8 +65,6 @@ try {
     };
   }
 }
-const fs = require('fs');
-fs.unlinkSync(__dirname + '/.tmp/localDiskDb.db');
 
 // Start server
 sails.lift(rc('sails'));
