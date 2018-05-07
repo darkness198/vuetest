@@ -46,7 +46,7 @@ module.exports.routes = {
 
   'get /api/user/get': 'user/UserController.get',
 
-  'get /api/products/get': 'ProductsController.getProducts',
+  'get /api/products/get': 'products/ProductsController.getProducts',
 
   'post /api/user/products/product/post':
     'user/products/product/ProductController.postProduct',

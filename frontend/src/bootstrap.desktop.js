@@ -1,5 +1,6 @@
 import { Vue, store, LocaleMixin } from './bootstrap.mixin'
 import App from './App.desktop'
+
 import router from './router/router.desktop'
 import Vuetify from 'vuetify'
 import BootstrapVue from 'bootstrap-vue'

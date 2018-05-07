@@ -24,6 +24,30 @@
 
 // };
 
+// module.exports = {
+// getProducts: (req, res) => {
+//   const page = req.param('page');
+
+//   Product.count().exec((error, amountOfProducts) => {
+//     if (error) return res.serverError(error);
+
+//     Product.find()
+//       .populate('user')
+//       .skip((page - 1) * 6)
+//       .limit(6)
+//       .exec((error, products) => {
+//         if (error) return res.serverError(error);
+
+//         if (products)
+//           return res.json({
+//             products,
+//             amountOfProducts
+//           });
+//       });
+//   });
+// }
+// };
+
 module.exports = {
   getProducts: (req, res) => {
     const page = req.param('page');
@@ -33,11 +57,10 @@ module.exports = {
 
       Product.find()
         .populate('user')
-        .skip((page - 1) * 6)
-        .limit(6)
+        .paginate(page, 6)
         .exec((error, products) => {
           if (error) return res.serverError(error);
-
+          console.log(products);
           if (products)
             return res.json({
               products,
@@ -47,79 +70,3 @@ module.exports = {
     });
   }
 };
-
-// module.exports = {
-//   friendlyName: 'GetProducts',
-
-//   description: 'Gets all the products',
-
-//   extendedDescription: `products`,
-
-//   inputs: {
-//     page: {
-//       description: 'page for pagination',
-//       type: 'number',
-//       required: true
-//     },
-
-//     password: {
-//       description:
-//         'The unencrypted password to try in this attempt, e.g. "passwordlol".',
-//       type: 'string',
-//       required: true
-//     }
-//   },
-
-//   exits: {
-//     success: {
-//       description: 'The requesting user agent has been successfully logged in.',
-//       extendedDescription: `Under the covers, this stores the id of the logged-in user in the session
-// as the \`userId\` key.  The next time this user agent sends a request, assuming
-// it includes a cookie (like a web browser), Sails will automatically make this
-// user id available as req.session.userId in the corresponding action.  (Also note
-// that, thanks to the included "custom" hook, when a relevant request is received
-// from a logged-in user, that user's entire record from the database will be fetched
-// and exposed as \`req.me\`.)`
-//     },
-
-//     badCombo: {
-//       description: `The provided email and password combination does not
-//       match any user in the database.`,
-//       responseType: 'unauthorized'
-//       // ^This uses the custom `unauthorized` response located in `api/responses/unauthorized.js`.
-//       // To customize the generic "unauthorized" response across this entire app, change that file
-//       // (see http://sailsjs.com/anatomy/api/responses/unauthorized-js).
-//       //
-//       // To customize the response for _only this_ action, replace `responseType` with
-//       // something else.  For example, you might set `statusCode: 498` and change the
-//       // implementation below accordingly (see http://sailsjs.com/docs/concepts/controllers).
-//     }
-//   },
-
-//   fn: async function(inputs, exits) {
-//     // Look up by the email address.
-//     // (note that we lowercase it to ensure the lookup is always case-insensitive,
-//     // regardless of which database we're using)
-//     const page = req.param('page');
-
-//     Product.count().exec((error, amountOfProducts) => {
-//       console.log('amt of products', amountOfProducts);
-//       console.log(('skip', (page - 1) * 6));
-//       Product.find()
-//         .populate('user')
-//         .skip((page - 1) * 6)
-//         .limit(6)
-//         .exec((error, products) => {
-//           console.log(products.length);
-//           if (products)
-//             return exits.success({
-//               products,
-//               amountOfProducts
-//             });
-//         });
-//     });
-
-//     // Send success response (this is where the session actually gets persisted)
-//     return exits.success();
-//   }
-// };

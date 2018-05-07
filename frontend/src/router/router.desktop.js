@@ -8,7 +8,14 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'Landing',
+      component: resolve => {
+        require(['./../components/Landing.desktop.vue'], resolve)
+      }
+    },
+    {
+      path: '/alt',
+      name: 'AltHome',
       component: resolve => {
         require(['./../components/Home.desktop.vue'], resolve)
       }
@@ -31,7 +38,9 @@ export default new Router({
       path: '/user/products/index',
       name: 'Products',
       component: resolve => {
-        require(['../components/user/products/ProductsIndex.desktop.vue'], resolve)
+        require([
+          '../components/user/products/ProductsIndex.desktop.vue'
+        ], resolve)
       },
       meta: {
         userOnly: true
