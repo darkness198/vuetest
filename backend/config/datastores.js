@@ -47,8 +47,5 @@ module.exports.datastores = {
      ***************************************************************************/
     // adapter: 'sails-mysql',
     // url: 'mysql://user:password@host:port/database',
-    adapter: require('sails-postgresql'),
-
-    url: 'postgres://postgres:waterfall1@localhost:5432/vuesails'
   }
 };
