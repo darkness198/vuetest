@@ -20,8 +20,7 @@ module.exports = {
   // }
   datastores: {
     default: {
-      adapter: require('sails-postgresql'),
-      ssl: true
+      adapter: require('sails-postgresql')
     }
 
     // models: {
